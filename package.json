@@ -1,0 +1,53 @@
+{
+  "name": "react-store-light",
+  "version": "1.0.0",
+  "description": "A observer-based state manager for React",
+  "author": "KUROCHKIN DENIS",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/denisso/react-store-light.git"
+  },
+  "homepage": "https://github.com/denisso/react-store-light#readme",
+  "bugs": {
+    "url": "https://github.com/denisso/react-store-light/issues"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "react",
+    "state",
+    "store",
+    "observer",
+    "hooks",
+    "typescript"
+  ],
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.1",
+    "@types/react": "^19.2.7",
+    "jsdom": "^27.4.0",
+    "prettier": "^3.7.4",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16"
+  }
+}

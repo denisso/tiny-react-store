@@ -1,0 +1,22 @@
+# Source & tests
+src/
+__tests__/
+coverage/
+
+# Tooling
+*.config.*
+.eslint*
+.prettier*
+.vscode/
+.idea/
+
+# Environment / OS
+*.log
+*.local
+.DS_Store
+
+# Git
+.gitignore
+
+# Misc
+npm-debug.log*
