@@ -25,11 +25,16 @@ type Store<T extends object> = keyof T extends never
 
 export type Listener<T> = (name: string, value: T) => void;
 
-export const createStore = <T extends object>(initData: T) => {
+/**
+ * Creates a new isolated store instance.
+ * @param initState initial state
+ * @returns
+ */
+export const createStore = <T extends object>(initState: T) => {
   const store = {} as Store<T>;
-  Object.keys(initData).forEach((key) => {
+  Object.keys(initState).forEach((key) => {
     const typedKey = key as keyof T;
-    store[typedKey] = new Subject(key, initData[typedKey]) as unknown as Store<T>[keyof T];
+    store[typedKey] = new Subject(key, initState[typedKey]) as unknown as Store<T>[keyof T];
   });
 
   const useStore = <K extends keyof T>(key: K): T[K] => {
@@ -52,9 +57,9 @@ export const createStore = <T extends object>(initData: T) => {
     return store[key].value as T[K];
   };
 
-  const set = <K extends keyof T>(key: K, value: T[K], isCbCall: boolean = true) => {
+  const set = <K extends keyof T>(key: K, value: T[K], isCallListener: boolean = true) => {
     checkKey(store, key);
-    (store[key] as unknown as Subject<T[K]>).notify(value, isCbCall);
+    (store[key] as unknown as Subject<T[K]>).notify(value, isCallListener);
   };
 
   const addListener = <K extends keyof T>(key: K, listener: Listener<T[K]>) => {
